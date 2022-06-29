@@ -40,3 +40,32 @@ def ano_bissexto(ano_a_ser_analisado):
             if ano_a_ser_analisado % 400 == 0:
                 resultado = True
     return resultado
+
+
+def inteiro_ou_decimal(numero):
+    if numero % 1 == 0:  # aqui utilizo o resto da divisão, pois se tiver sobra, o número sera sempre um float
+        return f"O número {numero} é do tipo inteiro."
+    else:
+        return f"O número {numero} é do tipo decimal"
+
+
+def par_ou_impar(numero):
+    numero_testado = inteiro_ou_decimal(numero)  # testa se o número é inteiro ou decimal
+    if "inteiro" in numero_testado:  # Se o número for inteiro é usado resto da divisão por 2
+        if numero % 2 == 0:
+            return f"O número {numero} é par"
+        else:
+            return f"O número {numero} é impar"
+    else:
+        resto = round(numero % 2)  # O número sendo decimal, pega o resto da divisão e faz um novo teste
+        if resto % 0.02 == 0:
+            return f"O número {numero} é par"
+        else:
+            return f"O número {numero} é impar"
+
+
+def positivo_ou_negativo(numero):
+    if numero >= 0:
+        return f"O número {numero} é positivo."
+    else:
+        return f"O número {numero} é negativo"
