@@ -69,3 +69,17 @@ def positivo_ou_negativo(numero):
         return f"O número {numero} é positivo."
     else:
         return f"O número {numero} é negativo"
+
+
+def checador_de_perguntas(pergunta):
+    resultado = False
+    pergunta = pergunta.upper().strip()
+    if pergunta == "NAO" or pergunta == "SIM":
+        resultado = True
+    return resultado
+
+
+def checa_tipo_combustivel(tipo_combustivel):
+    tipo_combustivel = tipo_combustivel.upper()
+    if tipo_combustivel == "A" or tipo_combustivel == "G":
+        return True
