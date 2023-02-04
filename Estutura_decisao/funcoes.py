@@ -83,3 +83,75 @@ def checa_tipo_combustivel(tipo_combustivel):
     tipo_combustivel = tipo_combustivel.upper()
     if tipo_combustivel == "A" or tipo_combustivel == "G":
         return True
+
+
+def calculo_combustiveis(litros, combustivel):
+    alcool = 1.90
+    gasolina = 2.50
+    if combustivel.upper() == "G":
+        valor = litros * gasolina
+        if litros <= 20:
+            valor_abastecido = valor - (valor * 0.04)
+        else:
+            valor_abastecido = valor - (valor * 0.06)
+    else:
+        valor = litros * alcool
+        if litros <= 20:
+            valor_abastecido = valor - (valor * 0.03)
+        else:
+            valor_abastecido = valor - (valor * 0.05)
+    return valor_abastecido
+
+
+def valor_maca(peso):
+    if peso <= 5:
+        valor = peso * 1.80
+    else:
+        valor = peso * 1.50
+    return valor
+
+
+def valor_morango(peso):
+    if peso <= 5:
+        valor = peso * 2.50
+    else:
+        valor = peso * 2.20
+    return valor
+
+
+class Compra:
+    def __init__(self, tipo_carne, quantidade, metodo_pagamento):
+        self.tipo_carne = tipo_carne.upper()
+        self.quantidade = quantidade
+        self.metodo_pagamento = metodo_pagamento.upper()
+
+    def calculadora_de_carnes(self):
+        valor, valor_kilo, desconto, valor_total = 0, 0, 0, 0
+        if self.tipo_carne == "F":
+            carne = "Filé Duplo"
+            if self.quantidade <= 5:
+                valor_kilo = 4.90
+            elif self.quantidade > 5:
+                valor_kilo = 5.80
+        elif self.tipo_carne == "A":
+            carne = "Alcatra"
+            if self.quantidade <= 5:
+                valor_kilo = 5.90
+            elif self.quantidade > 5:
+                valor_kilo = 6.80
+        else:
+            carne = "Picanha"
+            if self.quantidade <= 5:
+                valor_kilo = 6.90
+            elif self.quantidade > 5:
+                valor_kilo = 7.80
+        valor = self.quantidade * valor_kilo
+        if self.metodo_pagamento == "SIM":
+            desconto = valor * 5 / 100
+            valor_total = valor - desconto
+        return f'- Produto = {carne}\n- Quantidade {self.quantidade} Kilos' \
+               f'\n- Valor Kilo R${valor_kilo:.2f}\n- Valor R$ {valor:.2f}' \
+               f'\n- Desconto R$ {desconto}\n- Valor final R$ {valor_total:.2f}'
+
+    def __str__(self):
+        return self.calculadora_de_carnes()
